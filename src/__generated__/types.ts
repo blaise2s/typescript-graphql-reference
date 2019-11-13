@@ -18,7 +18,7 @@ export type Query = {
 
 
 export type QueryUserArgs = {
-  id: Scalars['ID']
+  id: Scalars['Int']
 };
 
 export type User = {
@@ -103,7 +103,6 @@ export type ResolversTypes = {
   User: ResolverTypeWrapper<Partial<User>>,
   Int: ResolverTypeWrapper<Partial<Scalars['Int']>>,
   String: ResolverTypeWrapper<Partial<Scalars['String']>>,
-  ID: ResolverTypeWrapper<Partial<Scalars['ID']>>,
   Boolean: ResolverTypeWrapper<Partial<Scalars['Boolean']>>,
 };
 
@@ -113,7 +112,6 @@ export type ResolversParentTypes = {
   User: Partial<User>,
   Int: Partial<Scalars['Int']>,
   String: Partial<Scalars['String']>,
-  ID: Partial<Scalars['ID']>,
   Boolean: Partial<Scalars['Boolean']>,
 };
 

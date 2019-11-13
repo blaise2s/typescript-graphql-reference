@@ -5,7 +5,7 @@ import { User } from "src/__generated__/types";
 
 export interface IUserService extends DataSource {
   getUsers(): Promise<User[]>;
-  getUser(id: string): Promise<User>;
+  getUser(id: number): Promise<User>;
 }
 
 export interface IDataSources {
