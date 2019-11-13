@@ -1,11 +1,7 @@
-import { IConfiguration } from "../../../utils/config";
-import { logger } from "../../../utils/logger";
+import { IConfiguration, logger } from "../../../utils";
 import { configureSequelize } from "./configureSequelize";
-import { User, UserFactory } from "../user";
-
-export interface IDatabase {
-  User: typeof User;
-}
+import { UserFactory } from "../user";
+import { IDatabase } from "../";
 
 export const loadDatabase = (config: IConfiguration) => {
   const sequelize = configureSequelize(config);

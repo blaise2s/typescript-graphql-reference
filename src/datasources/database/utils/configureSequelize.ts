@@ -1,6 +1,5 @@
 import { Sequelize } from "sequelize";
-import { IConfiguration } from "../../../utils/config";
-import { logger } from "../../../utils/logger";
+import { IConfiguration, logger } from "../../../utils";
 
 export const configureSequelize = (config: IConfiguration) => {
   const db = config.database;

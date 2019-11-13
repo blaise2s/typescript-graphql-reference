@@ -1,5 +1,5 @@
 import fs from "fs";
-import { logger } from "../utils/logger";
+import { logger } from "./logger";
 import path from "path";
 
 export type Dialect = "mysql" | "postgres" | "sqlite" | "mariadb" | "mssql";

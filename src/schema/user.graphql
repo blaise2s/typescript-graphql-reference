@@ -3,3 +3,9 @@ type User {
   firstName: String!
   lastName: String!
 }
+
+input UserFilter {
+  ids: [Int!]
+  fitstNameSearch: String
+  lastNameSearch: String
+}

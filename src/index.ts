@@ -1,15 +1,14 @@
 import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
-import { permissionMiddleware } from "./auth/permissionMiddleware";
+import { permissionMiddleware } from "./auth";
 import compression from "compression";
 import { configureDataSources } from "./datasources";
 import express from "express";
 import { applyMiddleware } from "graphql-middleware";
 import morgan from "morgan";
 import { resolvers } from "./resolvers";
-import { loadSchema } from "./schema/loadSchema";
-import { loadConfig } from "./utils/config";
-import { logger } from "./utils/logger";
-import { loadDatabase } from "./datasources/database/utils/loadDatabase";
+import { loadSchema } from "./schema";
+import { loadConfig, logger } from "./utils";
+import { loadDatabase } from "./datasources/database/utils";
 
 const config = loadConfig();
 const typeDefs = loadSchema();
