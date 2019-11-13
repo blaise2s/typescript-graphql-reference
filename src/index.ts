@@ -1,19 +1,20 @@
 import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
 import { permissionMiddleware } from "./auth/permissionMiddleware";
 import compression from "compression";
-import configureDataSources from "./datasources";
+import { configureDataSources } from "./datasources";
 import express from "express";
 import { applyMiddleware } from "graphql-middleware";
 import morgan from "morgan";
-import resolvers from "./resolvers";
+import { resolvers } from "./resolvers";
 import { loadSchema } from "./schema/loadSchema";
 import { loadConfig } from "./utils/config";
-import logger from "./utils/logger";
+import { logger } from "./utils/logger";
+import { loadDatabase } from "./datasources/database/utils/loadDatabase";
 
-const env = process.env.NODE_ENV || "production";
-const config = loadConfig(env);
+const config = loadConfig();
 const typeDefs = loadSchema();
-const dataSources = configureDataSources();
+const db = loadDatabase(config);
+const dataSources = configureDataSources(db);
 
 const schema = applyMiddleware(
   makeExecutableSchema({
@@ -66,4 +67,4 @@ app.use(
 
 app.use(compression());
 server.applyMiddleware({ app });
-app.listen({ port: config.port }, () => logger.info(`🚀 Server listening on ${config.port}, env: ${env}.`));
+app.listen({ port: config.port }, () => logger.info(`🚀 Server listening on ${config.port}, env: ${config.env}.`));

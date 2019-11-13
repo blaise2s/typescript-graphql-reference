@@ -1,22 +1,20 @@
 import { IUserService } from "./index";
 import { User } from "src/__generated__/types";
+import { IDatabase } from "./database/utils/loadDatabase";
+import { UserDataLoader, userLoader } from "./loaders";
 
-class UserService implements IUserService {
-  // TODO
-  blaise: User = {
-    id: "1",
-    firstName: "Blaise",
-    lastName: "Schaeffer",
-  };
+export class UserService implements IUserService {
+  private userLoader: UserDataLoader;
+
+  constructor(private db: IDatabase) {
+    this.userLoader = userLoader(db);
+  }
 
   getUsers(): Promise<User[]> {
-    const users: User[] = [];
-    users.push(this.blaise);
-    return Promise.resolve(users);
+    return this.db.User.findAll();
   }
-  getUser(id: string): Promise<User> {
-    return Promise.resolve(this.blaise);
+
+  getUser(id: number): Promise<User> {
+    return this.userLoader.load(id);
   }
 }
-
-export default UserService;
