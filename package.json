@@ -1,5 +1,5 @@
 {
-  "name": "typescript-reference",
+  "name": "typescript-graphql-reference",
   "version": "1.0.0",
   "description": "Typescript Reference Project",
   "main": "src/index.ts",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blaise2s/typescript-reference.git"
+    "url": "git+https://github.com/blaise2s/typescript-graphql-reference.git"
   },
   "author": "Blaise Schaeffer",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blaise2s/typescript-reference/issues"
+    "url": "https://github.com/blaise2s/typescript-graphql-reference/issues"
   },
-  "homepage": "https://github.com/blaise2s/typescript-reference#readme",
+  "homepage": "https://github.com/blaise2s/typescript-graphql-reference#readme",
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
