@@ -25,7 +25,6 @@ export class UserService implements IUserService {
         where.firstName = { [Op.iLike]: buildSearch(filter.fitstNameSearch) };
       }
     }
-    console.log(where);
     return this.db.User.findAll({ where });
   }
 
