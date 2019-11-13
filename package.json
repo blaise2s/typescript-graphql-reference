@@ -1,13 +1,17 @@
 {
-  "name": "typescript-reference",
+  "name": "typescript-graphql-reference",
   "version": "1.0.0",
   "description": "Typescript Reference Project",
   "main": "src/index.ts",
   "scripts": {
-    "build": "tsc",
-    "cl": "commitlint",
+    "build": "tsc && npm run buildSchema",
+    "buildSchema": "cp src/schema/*.graphql build/schema",
+    "cmtlnt": "commitlint",
     "dev": "nodemon",
+    "gen:env": "cross-env NODE_ENV=development ts-node -r dotenv/config ./scripts/env.ts",
+    "gen:types": "graphql-codegen --config codegen.yaml",
     "prettier": "pretty-quick",
+    "start": "node build/index.js",
     "test": "jest"
   },
   "husky": {
@@ -18,20 +22,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blaise2s/typescript-reference.git"
+    "url": "git+https://github.com/blaise2s/typescript-graphql-reference.git"
   },
   "author": "Blaise Schaeffer",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blaise2s/typescript-reference/issues"
+    "url": "https://github.com/blaise2s/typescript-graphql-reference/issues"
   },
-  "homepage": "https://github.com/blaise2s/typescript-reference#readme",
+  "homepage": "https://github.com/blaise2s/typescript-graphql-reference#readme",
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@graphql-codegen/cli": "^1.8.3",
+    "@graphql-codegen/typescript": "^1.8.3",
+    "@graphql-codegen/typescript-resolvers": "^1.8.3",
+    "@types/compression": "^1.0.1",
+    "@types/express": "^4.17.2",
+    "@types/inquirer": "^6.5.0",
     "@types/jest": "^24.0.22",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/morgan": "^1.7.37",
     "@types/node": "^12.12.7",
+    "cross-env": "^6.0.3",
+    "dotenv": "^8.2.0",
     "husky": "^3.0.9",
+    "inquirer": "^7.0.0",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
@@ -40,5 +55,16 @@
     "ts-node": "^8.5.0",
     "typescript": "^3.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "apollo-datasource": "^0.6.3",
+    "apollo-server-express": "^2.9.8",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "graphql-middleware": "^4.0.2",
+    "graphql-shield": "^7.0.2",
+    "lodash.merge": "^4.6.2",
+    "morgan": "^1.9.1",
+    "winston": "^3.2.1"
+  }
 }
