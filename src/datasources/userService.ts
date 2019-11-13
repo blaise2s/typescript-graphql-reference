@@ -2,9 +2,9 @@ import { IUserService } from "./index";
 import { User } from "src/__generated__/types";
 
 export class UserService implements IUserService {
-  // TODO
+  // TODO - Get data dynamically
   blaise: User = {
-    id: "1",
+    id: 1,
     firstName: "Blaise",
     lastName: "Schaeffer",
   };

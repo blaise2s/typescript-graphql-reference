@@ -22,7 +22,7 @@ export type QueryUserArgs = {
 
 export type User = {
   __typename?: "User";
-  id: Scalars["ID"];
+  id: Scalars["Int"];
   firstName: Scalars["String"];
   lastName: Scalars["String"];
 };
@@ -81,8 +81,9 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
   User: ResolverTypeWrapper<Partial<User>>;
-  ID: ResolverTypeWrapper<Partial<Scalars["ID"]>>;
+  Int: ResolverTypeWrapper<Partial<Scalars["Int"]>>;
   String: ResolverTypeWrapper<Partial<Scalars["String"]>>;
+  ID: ResolverTypeWrapper<Partial<Scalars["ID"]>>;
   Boolean: ResolverTypeWrapper<Partial<Scalars["Boolean"]>>;
 };
 
@@ -90,8 +91,9 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Query: {};
   User: Partial<User>;
-  ID: Partial<Scalars["ID"]>;
+  Int: Partial<Scalars["Int"]>;
   String: Partial<Scalars["String"]>;
+  ID: Partial<Scalars["ID"]>;
   Boolean: Partial<Scalars["Boolean"]>;
 };
 
@@ -101,7 +103,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes["User"] = ResolversParentTypes["User"]> = {
-  id?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   firstName?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   lastName?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
 };

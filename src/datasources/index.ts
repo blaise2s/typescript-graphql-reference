@@ -1,6 +1,7 @@
-import { User } from "./user";
 import { UserService } from "./userService";
 import { DataSource } from "apollo-datasource";
+import { IDatabase } from "../datasources/database/utils/loadDatabase";
+import { User } from "src/__generated__/types";
 
 export interface IUserService extends DataSource {
   getUsers(): Promise<User[]>;
@@ -12,7 +13,7 @@ export interface IDataSources {
   userService: IUserService;
 }
 
-export const configureDataSources = () => {
+export const configureDataSources = (db: IDatabase) => {
   const dataSources: () => IDataSources = () => ({
     userService: new UserService(),
   });
