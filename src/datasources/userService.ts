@@ -1,20 +1,15 @@
 import { IUserService } from "./index";
 import { User } from "src/__generated__/types";
+import { IDatabase } from "./database/utils/loadDatabase";
 
 export class UserService implements IUserService {
-  // TODO - Get data dynamically
-  blaise: User = {
-    id: 1,
-    firstName: "Blaise",
-    lastName: "Schaeffer",
-  };
+  constructor(private db: IDatabase) {}
 
   getUsers(): Promise<User[]> {
-    const users: User[] = [];
-    users.push(this.blaise);
-    return Promise.resolve(users);
+    return this.db.User.findAll();
   }
+
   getUser(id: string): Promise<User> {
-    return Promise.resolve(this.blaise);
+    return this.db.User.findByPk(id);
   }
 }

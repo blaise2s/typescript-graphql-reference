@@ -15,7 +15,7 @@ export interface IDataSources {
 
 export const configureDataSources = (db: IDatabase) => {
   const dataSources: () => IDataSources = () => ({
-    userService: new UserService(),
+    userService: new UserService(db),
   });
   return dataSources;
 };

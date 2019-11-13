@@ -1,10 +1,10 @@
 import { IConfiguration } from "../../../utils/config";
 import { logger } from "../../../utils/logger";
 import { configureSequelize } from "./configureSequelize";
+import { User, UserFactory } from "../user";
 
 export interface IDatabase {
-  // TODO - Update interface
-  // User: typeof User;
+  User: typeof User;
 }
 
 export const loadDatabase = (config: IConfiguration) => {
@@ -21,8 +21,7 @@ export const loadDatabase = (config: IConfiguration) => {
     });
 
   const db: IDatabase = {
-    // TODO - Initialize DB models
-    // User: UserFactory(sequelize),
+    User: UserFactory(sequelize),
   };
 
   // Add relations

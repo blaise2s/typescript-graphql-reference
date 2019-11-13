@@ -1,51 +1,67 @@
-import { GraphQLResolveInfo } from "graphql";
+import { GraphQLResolveInfo } from 'graphql';
 export type Maybe<T> = T | null;
 export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
+  ID: string,
+  String: string,
+  Boolean: boolean,
+  Int: number,
+  Float: number,
 };
 
 export type Query = {
-  __typename?: "Query";
-  users?: Maybe<Array<User>>;
-  user: User;
+   __typename?: 'Query',
+  users?: Maybe<Array<User>>,
+  user?: Maybe<User>,
 };
 
+
 export type QueryUserArgs = {
-  id: Scalars["ID"];
+  id: Scalars['ID']
 };
 
 export type User = {
-  __typename?: "User";
-  id: Scalars["Int"];
-  firstName: Scalars["String"];
-  lastName: Scalars["String"];
+   __typename?: 'User',
+  id: Scalars['Int'],
+  firstName: Scalars['String'],
+  lastName: Scalars['String'],
 };
+
+
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
-export type ResolverFn<TResult, TParent, TContext, TArgs> = (parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<TResult> | TResult;
+export type ResolverFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => Promise<TResult> | TResult;
+
 
 export type StitchingResolver<TResult, TParent, TContext, TArgs> = {
   fragment: string;
   resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
 };
 
-export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> = ResolverFn<TResult, TParent, TContext, TArgs> | StitchingResolver<TResult, TParent, TContext, TArgs>;
+export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
+  | ResolverFn<TResult, TParent, TContext, TArgs>
+  | StitchingResolver<TResult, TParent, TContext, TArgs>;
 
 export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
   context: TContext,
-  info: GraphQLResolveInfo,
+  info: GraphQLResolveInfo
 ) => AsyncIterator<TResult> | Promise<AsyncIterator<TResult>>;
 
-export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => TResult | Promise<TResult>;
+export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => TResult | Promise<TResult>;
 
 export interface SubscriptionSubscriberObject<TResult, TKey extends string, TParent, TContext, TArgs> {
   subscribe: SubscriptionSubscribeFn<{ [key in TKey]: TResult }, TParent, TContext, TArgs>;
@@ -65,7 +81,11 @@ export type SubscriptionResolver<TResult, TKey extends string, TParent = {}, TCo
   | ((...args: any[]) => SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>)
   | SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>;
 
-export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (parent: TParent, context: TContext, info: GraphQLResolveInfo) => Maybe<TTypes>;
+export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (
+  parent: TParent,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => Maybe<TTypes>;
 
 export type NextResolverFn<T> = () => Promise<T>;
 
@@ -74,47 +94,48 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
   parent: TParent,
   args: TArgs,
   context: TContext,
-  info: GraphQLResolveInfo,
+  info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>;
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  Query: ResolverTypeWrapper<{}>;
-  User: ResolverTypeWrapper<Partial<User>>;
-  Int: ResolverTypeWrapper<Partial<Scalars["Int"]>>;
-  String: ResolverTypeWrapper<Partial<Scalars["String"]>>;
-  ID: ResolverTypeWrapper<Partial<Scalars["ID"]>>;
-  Boolean: ResolverTypeWrapper<Partial<Scalars["Boolean"]>>;
+  Query: ResolverTypeWrapper<{}>,
+  User: ResolverTypeWrapper<Partial<User>>,
+  Int: ResolverTypeWrapper<Partial<Scalars['Int']>>,
+  String: ResolverTypeWrapper<Partial<Scalars['String']>>,
+  ID: ResolverTypeWrapper<Partial<Scalars['ID']>>,
+  Boolean: ResolverTypeWrapper<Partial<Scalars['Boolean']>>,
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  Query: {};
-  User: Partial<User>;
-  Int: Partial<Scalars["Int"]>;
-  String: Partial<Scalars["String"]>;
-  ID: Partial<Scalars["ID"]>;
-  Boolean: Partial<Scalars["Boolean"]>;
+  Query: {},
+  User: Partial<User>,
+  Int: Partial<Scalars['Int']>,
+  String: Partial<Scalars['String']>,
+  ID: Partial<Scalars['ID']>,
+  Boolean: Partial<Scalars['Boolean']>,
 };
 
-export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes["Query"] = ResolversParentTypes["Query"]> = {
-  users?: Resolver<Maybe<Array<ResolversTypes["User"]>>, ParentType, ContextType>;
-  user?: Resolver<ResolversTypes["User"], ParentType, ContextType, RequireFields<QueryUserArgs, "id">>;
+export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  users?: Resolver<Maybe<Array<ResolversTypes['User']>>, ParentType, ContextType>,
+  user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserArgs, 'id'>>,
 };
 
-export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes["User"] = ResolversParentTypes["User"]> = {
-  id?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
-  firstName?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
-  lastName?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
+export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  firstName?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  lastName?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
 };
 
 export type Resolvers<ContextType = any> = {
-  Query?: QueryResolvers<ContextType>;
-  User?: UserResolvers<ContextType>;
+  Query?: QueryResolvers<ContextType>,
+  User?: UserResolvers<ContextType>,
 };
+
 
 /**
  * @deprecated
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
- */
+*/
 export type IResolvers<ContextType = any> = Resolvers<ContextType>;
