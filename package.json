@@ -48,6 +48,7 @@
     "husky": "^3.0.9",
     "inquirer": "^7.0.0",
     "jest": "^24.9.0",
+    "mem": "^6.0.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
