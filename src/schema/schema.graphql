@@ -1,4 +1,8 @@
 type Query {
-  users: [User!]
+  users(filter: UserFilter): [User!]
   user(id: Int!): User
+}
+
+type Mutation {
+  addUser(firstName: String!, lastName: String!): User!
 }

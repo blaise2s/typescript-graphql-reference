@@ -12,6 +12,7 @@ export const UserFactory = (sequelize: Sequelize) => {
       id: {
         field: "id",
         primaryKey: true,
+        autoIncrement: true,
         type: DataTypes.INTEGER,
       },
       firstName: {

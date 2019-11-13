@@ -1,11 +1,11 @@
-import { IDatabase } from "../database/utils/loadDatabase";
+import { IDatabase } from "../database";
 import { User } from "src/__generated__/types";
 import DataLoader from "dataloader";
 
 export type UserBatch = (ids: number[]) => Promise<User[]>;
 export type UserDataLoader = ReturnType<typeof userLoader>;
 
-const fetchUsers = async (db: IDatabase, ids: number[]) => {
+export const fetchUsers = async (db: IDatabase, ids: number[]) => {
   const users: User[] = await db.User.findAll({
     where: {
       id: ids,
