@@ -1,5 +1,5 @@
 import { User } from "./user";
-import UserService from "./userService";
+import { UserService } from "./userService";
 import { DataSource } from "apollo-datasource";
 
 export interface IUserService extends DataSource {
@@ -12,11 +12,9 @@ export interface IDataSources {
   userService: IUserService;
 }
 
-const configureDataSources = () => {
+export const configureDataSources = () => {
   const dataSources: () => IDataSources = () => ({
     userService: new UserService(),
   });
   return dataSources;
 };
-
-export default configureDataSources;

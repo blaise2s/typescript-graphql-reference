@@ -1,7 +1,7 @@
 import { IUserService } from "./index";
 import { User } from "src/__generated__/types";
 
-class UserService implements IUserService {
+export class UserService implements IUserService {
   // TODO
   blaise: User = {
     id: "1",
@@ -18,5 +18,3 @@ class UserService implements IUserService {
     return Promise.resolve(this.blaise);
   }
 }
-
-export default UserService;

@@ -19,6 +19,4 @@ const loggerConfig =
         transports: [new winston.transports.Console()],
       };
 
-const logger = winston.createLogger(loggerConfig);
-
-export default logger;
+export const logger = winston.createLogger(loggerConfig);
