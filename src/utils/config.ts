@@ -5,6 +5,7 @@ import path from "path";
 export type Dialect = "mysql" | "postgres" | "sqlite" | "mariadb" | "mssql";
 
 export interface IConfiguration {
+  offlineLocal: boolean;
   env: string;
   logLevel: string;
   port: number;
@@ -75,7 +76,12 @@ export const loadConfig: () => IConfiguration = () => {
   }
 
   const env = process.env.NODE_ENV;
+  const offlineLocal = process.env.OFFLINE_LOCAL === "true";
+  if (offlineLocal) {
+    logger.warn("config: offline, local development is enabled");
+  }
   const baseConfig = {
+    offlineLocal,
     env,
     port: +process.env.PORT,
     secrets,

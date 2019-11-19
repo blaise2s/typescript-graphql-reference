@@ -5,6 +5,7 @@
 ### Custom Ignores ###
 build/
 .secrets/
+postgres-data/
 ### Custom Ignores ###
 
 ### Emacs ###
