@@ -1,0 +1,11 @@
+const path = require("path");
+
+const typescript = "src/dataSources/database";
+const javascript = "build/dataSources/database";
+
+module.exports = {
+  config: path.resolve(javascript, "config", "database.js"),
+  "models-path": path.resolve(typescript, "models"),
+  "seeders-path": path.resolve(javascript, "seeders"),
+  "migrations-path": path.resolve(javascript, "migrations"),
+};

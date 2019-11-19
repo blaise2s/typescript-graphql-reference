@@ -8,7 +8,7 @@ import path from "path";
  */
 
 // only these keys will be present in final .env file
-const validKeys = ["NODE_ENV", "LOG_LEVEL", "PORT", "SECRET_PATH", "DB_DIALECT", "DB_HOST", "DB_PORT", "DB_NAME", "DB_SCHEMA", "DB_MAX_POOL_SIZE"];
+const validKeys = ["OFFLINE_LOCAL", "NODE_ENV", "LOG_LEVEL", "PORT", "SECRET_PATH", "DB_DIALECT", "DB_HOST", "DB_PORT", "DB_NAME", "DB_SCHEMA", "DB_MAX_POOL_SIZE"];
 
 const defaultSecretPath = path.join(__dirname, "..", ".secrets");
 const promptConfig = [
@@ -17,6 +17,12 @@ const promptConfig = [
     message: ".env filename:",
     name: "envFilename",
     default: ".env",
+  },
+  {
+    type: "boolean",
+    message: "Enable offline, local development mode:",
+    name: "OFFLINE_LOCAL",
+    default: process.env.OFFLINE_LOCAL || false,
   },
   {
     type: "input",
@@ -42,10 +48,9 @@ const promptConfig = [
     name: "SECRET_PATH",
     default: process.env.SECRET_PATH || defaultSecretPath,
   },
-  // DB_MAX_POOL_SIZE: number;
   {
     type: "input",
-    message: "DB dialect (must be one of 'mysql', 'postgres', 'sqlite', 'mariadb', or 'mssql'):",
+    message: "DB dialect (must be one of mysql, postgres, sqlite, mariadb, or mssql):",
     name: "DB_DIALECT",
     default: process.env.DB_DIALECT || "postgres",
   },

@@ -1,0 +1,13 @@
+version: "3"
+services:
+  postgres:
+    image: "postgres"
+    container_name: "local_postgres_typescript_graphql_reference"
+    environment:
+      - POSTGRES_USER=offlineLocal
+      - POSTGRES_PASSWORD=development
+      - POSTGRES_DB=typescript_graphql_reference
+    ports:
+      - "54320:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data

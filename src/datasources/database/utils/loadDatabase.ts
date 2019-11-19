@@ -1,6 +1,6 @@
 import { IConfiguration, logger } from "../../../utils";
 import { configureSequelize } from "./configureSequelize";
-import { UserFactory } from "../user";
+import { UserFactory } from "../models/user";
 import { IDatabase } from "../";
 
 export const loadDatabase = (config: IConfiguration) => {
